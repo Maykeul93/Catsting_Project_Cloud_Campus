@@ -1,6 +1,4 @@
 @use "reset.scss";
-body {
-}
 .navbar {
     background-color: #ea7852;
     display: flex;
@@ -22,4 +20,17 @@ body {
         text-decoration: none;
         color: inherit;
     }
+}
+
+.anecdote-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__button {
+        margin: 1rem 0;
+        padding: 0.5rem 2rem;
+    }
+}
+.anecdote-content {
+    background-color: darkgray;
 }
