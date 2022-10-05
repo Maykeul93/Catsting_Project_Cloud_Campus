@@ -155,6 +155,18 @@ table {
   text-decoration: none;
   color: inherit;
 }
+.navbar__darkmode {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.dark-background {
+  background-color: black;
+}
+
+.light-background {
+  background-color: white;
+}
 
 .anecdote-container {
   display: flex;
