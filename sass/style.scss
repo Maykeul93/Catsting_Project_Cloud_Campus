@@ -1,0 +1,25 @@
+@use "reset.scss";
+body {
+}
+.navbar {
+    background-color: #ea7852;
+    display: flex;
+    align-items: center;
+    &__title {
+        color: white;
+        padding: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    &__list {
+        display: flex;
+        margin-left: 1rem;
+    }
+    &__item {
+        padding: 1rem;
+    }
+    &__link {
+        text-decoration: none;
+        color: inherit;
+    }
+}
