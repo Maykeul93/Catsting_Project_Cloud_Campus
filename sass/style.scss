@@ -33,4 +33,14 @@
 }
 .anecdote-content {
     background-color: darkgray;
+    width: 50%;
+    height: 300px;
+    border-radius: 1rem;
+    text-align: center;
+    &__title {
+        color: #ea7852;
+        margin: 1rem 0;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
 }
