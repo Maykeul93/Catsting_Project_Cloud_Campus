@@ -20,7 +20,7 @@
         text-decoration: none;
         color: inherit;
     }
-    &__darkmode {
+    &__darkmodeImg {
         margin-left: auto;
         margin-right: 1rem;
     }
@@ -28,8 +28,8 @@
 .dark-background {
     background-color: black;
 }
-.light-background {
-    background-color: white;
+.dark-font {
+    color: white;
 }
 .anecdote-container {
     display: flex;
