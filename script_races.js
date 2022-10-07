@@ -9,16 +9,8 @@ async function getBreeds() {
         fetch("https://catfact.ninja/breeds?limit=100")
             .then((response) => response.json())
             .then((result) => {
-                if (countryElement.value === "null") {
-                    console.log(result);
-                    resolve(result.data);
-                } else {
-                    let data = result.data.filter(
-                        (element) => element.country == countryElement.value
-                    );
-                    console.log(data);
-                    resolve(data);
-                }
+                console.log(result);
+                resolve(result.data);
             })
             .catch((error) => console.log("error", error));
     });
@@ -29,12 +21,10 @@ console.log(getBreeds());
 async function onInit() {
     let breeds = await getBreeds();
     console.log(breeds);
-    addBreedToSelect(breeds);
     addCountryToSelect(breeds);
-    addCoatToSelect(breeds);
+    breeds = filterBreedsByCountry(breeds);
+    addBreedToSelect(breeds);
 }
-
-
 
 function addBreedToSelect(breedsElement) {
     breedsResultsNumber.textContent = `${breedsElement.length} résultats`;
@@ -60,6 +50,17 @@ function addCountryToSelect(dataElement) {
             countryElement.appendChild(option);
         }
     });
+}
+
+function filterBreedsByCountry(breeds) {
+    if (countryElement.value === "null") {
+        return breeds;
+    } else {
+        let data = breeds.filter(
+            (element) => element.country == countryElement.value
+        );
+        return data;
+    }
 }
 
 function addCoatToSelect(dataCoatElement){
