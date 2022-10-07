@@ -16,20 +16,20 @@ async function getBreeds() {
     });
 }
 
-console.log(getBreeds());
+console.log(countryElement);
 
 async function onInit() {
     let breeds = await getBreeds();
     console.log(breeds);
     addCountryToSelect(breeds);
     addCoatToSelect(breeds);
-    breeds = filterBreedsByCountry(breeds);
-    addBreedToSelect(breeds);
+    // breeds = filterBreedsByCountry(breeds);
+    addBreedToList(breeds);
     breeds = filterBreedsByCoat(breeds);
    
 }
 
-function addBreedToSelect(breedsElement) {
+function addBreedToList(breedsElement) {
     breedsResultsNumber.textContent = `${breedsElement.length} résultats`;
     breedContainerElement.innerHTML = "";
     breedsElement.forEach((element) => {
@@ -71,15 +71,20 @@ function addCoatToSelect(dataCoatElement){
     });
 }
 
-function filterBreedsByCountry(breeds) {
+async function filterBreedsByCountry() {
+    let breeds = await getBreeds();
+    let breedsFiltered = [];
     if (countryElement.value === "null") {
-        return breeds;
+        breedsFiltered = breeds;
     } else {
         let data = breeds.filter(
             (element) => element.country == countryElement.value
         );
-        return data;
+        breedsFiltered = data;
     }
+    //remove breeds to list
+    //add breeds to list
+    addBreedToList(breedsFiltered);
 }
 
 function filterBreedsByCoat(breeds) {
