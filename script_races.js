@@ -27,7 +27,6 @@ async function onInit() {
     filterBreedsByCoat(breeds);
     // breeds = filterBreedsByCountry(breeds);
     // breeds = filterBreedsByCoat(breeds);
-   
 }
 
 function addBreedToList(breedsElement) {
@@ -56,12 +55,10 @@ function addCountryToSelect(dataElement) {
     });
 }
 
-function addCoatToSelect(dataCoatElement){
+function addCoatToSelect(dataCoatElement) {
     let coat = [];
     dataCoatElement.forEach((element) => {
-        let coatAlreadyInArray = coat.includes(
-            element.coat.toString(),
-        );
+        let coatAlreadyInArray = coat.includes(element.coat.toString());
         if (!coatAlreadyInArray) {
             coat.push(element.coat.toString());
             const option = document.createElement("option");
@@ -91,19 +88,25 @@ async function filterBreedsByCountry() {
 async function filterBreedsByCoat() {
     let coat = await getBreeds();
     let coatFiltred = [];
+    let countrySelected = countryElement.value;
     if (coatElement.value === "null") {
         coatFiltred = coat;
     } else {
-        let data = coat.filter(
-            (element) => element.coat == coatElement.value
-        );
-        coatFiltred= data;
+        let data = coat.filter((element) => element.coat == coatElement.value);
+        if (countrySelected !== "null") {
+            coatFiltred = data.filter(
+                (element) => element.country == countrySelected
+            );
+            console.log("coatFiltred = ", coatFiltred);
+        } else {
+            coatFiltred = data;
+        }
     }
     addBreedToList(coatFiltred);
 }
 
- function myFunction() {
-     test.innerHTML = "Hello World";
-   }
+function myFunction() {
+    test.innerHTML = "Hello World";
+}
 
 onInit();
