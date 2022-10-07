@@ -23,9 +23,10 @@ async function onInit() {
     console.log(breeds);
     addCountryToSelect(breeds);
     addCoatToSelect(breeds);
-    // breeds = filterBreedsByCountry(breeds);
     addBreedToList(breeds);
-    breeds = filterBreedsByCoat(breeds);
+    filterBreedsByCoat(breeds);
+    // breeds = filterBreedsByCountry(breeds);
+    // breeds = filterBreedsByCoat(breeds);
    
 }
 
@@ -87,15 +88,18 @@ async function filterBreedsByCountry() {
     addBreedToList(breedsFiltered);
 }
 
-function filterBreedsByCoat(breeds) {
+async function filterBreedsByCoat() {
+    let coat = await getBreeds();
+    let coatFiltred = [];
     if (coatElement.value === "null") {
-        return breeds;
+        coatFiltred = coat;
     } else {
-        let data = breeds.filter(
+        let data = coat.filter(
             (element) => element.coat == coatElement.value
         );
-        return data;
+        coatFiltred= data;
     }
+    addBreedToList(coatFiltred);
 }
 
  function myFunction() {
