@@ -91,13 +91,19 @@ async function filterBreedsByCountry() {
 async function filterBreedsByCoat() {
     let coat = await getBreeds();
     let coatFiltred = [];
+    let countrySelected = countryElement.value;
     if (coatElement.value === "null") {
         coatFiltred = coat;
-    } else {
+    }else {
         let data = coat.filter(
             (element) => element.coat == coatElement.value
         );
         coatFiltred= data;
+    }
+    if (countrySelected !== coatFiltred){
+        coatFiltred;
+        console.log(coatFiltred);
+        console.log("test");
     }
     addBreedToList(coatFiltred);
 }
