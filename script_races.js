@@ -2,7 +2,7 @@ const countryElement = document.querySelector(".country-filter");
 const coatElement = document.querySelector(".pelage-filter");
 const breedContainerElement = document.querySelector(".race-left__breeds");
 const breedsResultsNumber = document.querySelector(".race-left__results");
-const test = document.querySelector(".race-left__breeds");
+const test = document.querySelector(".race-right");
 
 async function getBreeds() {
     return new Promise((resolve) => {
@@ -22,10 +22,11 @@ async function onInit() {
     let breeds = await getBreeds();
     console.log(breeds);
     addCountryToSelect(breeds);
+    addCoatToSelect(breeds);
     breeds = filterBreedsByCountry(breeds);
     addBreedToSelect(breeds);
     breeds = filterBreedsByCoat(breeds);
-    addCoatToSelect(breeds);
+   
 }
 
 function addBreedToSelect(breedsElement) {
@@ -54,6 +55,22 @@ function addCountryToSelect(dataElement) {
     });
 }
 
+function addCoatToSelect(dataCoatElement){
+    let coat = [];
+    dataCoatElement.forEach((element) => {
+        let coatAlreadyInArray = coat.includes(
+            element.coat.toString(),
+        );
+        if (!coatAlreadyInArray) {
+            coat.push(element.coat.toString());
+            const option = document.createElement("option");
+            option.textContent = element.coat.toString();
+            option.value = element.coat.toString();
+            coatElement.appendChild(option);
+        }
+    });
+}
+
 function filterBreedsByCountry(breeds) {
     if (countryElement.value === "null") {
         return breeds;
@@ -76,24 +93,8 @@ function filterBreedsByCoat(breeds) {
     }
 }
 
-function addCoatToSelect(dataCoatElement){
-    let coat = [];
-    dataCoatElement.forEach((element) => {
-        let coatAlreadyInArray = coat.includes(
-            element.coat.toString(),
-        );
-        if (!coatAlreadyInArray) {
-            coat.push(element.coat.toString());
-            const option = document.createElement("option");
-            option.textContent = element.coat.toString();
-            option.value = element.coat.toString();
-            coatElement.appendChild(option);
-        }
-    });
-}
-
-function myFunction() {
-    test.innerHTML = "Hello World";
-  }
+ function myFunction() {
+     test.innerHTML = "Hello World";
+   }
 
 onInit();

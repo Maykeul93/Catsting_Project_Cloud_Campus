@@ -55,8 +55,11 @@
 }
 
 .races-container {
+    display: flex;
+    padding: 2rem;
     .race-left {
-        padding: 2rem;
+        width: 50%;
+        
         &__head {
             display: flex;
             align-items: center;
@@ -67,5 +70,14 @@
             color: #ea7852;
             margin-right: 1rem;
         }
+        &__breeds li{
+            border: 1px solid red;
+            block-size: 40%;
+        }  
+    }
+    .race-right{
+        border: 1px solid red;
+        block-size: 40%;
+        width: 40%;
     }
 }
