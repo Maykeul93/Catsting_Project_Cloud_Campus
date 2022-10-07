@@ -24,6 +24,8 @@ async function onInit() {
     addCountryToSelect(breeds);
     breeds = filterBreedsByCountry(breeds);
     addBreedToSelect(breeds);
+    breeds = filterBreedsByCoat(breeds);
+    addCoatToSelect(breeds);
 }
 
 function addBreedToSelect(breedsElement) {
@@ -58,6 +60,17 @@ function filterBreedsByCountry(breeds) {
     } else {
         let data = breeds.filter(
             (element) => element.country == countryElement.value
+        );
+        return data;
+    }
+}
+
+function filterBreedsByCoat(breeds) {
+    if (coatElement.value === "null") {
+        return breeds;
+    } else {
+        let data = breeds.filter(
+            (element) => element.coat == coatElement.value
         );
         return data;
     }
