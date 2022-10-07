@@ -28,19 +28,24 @@
             <div class="race-left">
                 <div class="race-left__head">
                     <h2 class="race-left__title">Races</h2>
-                    <p class="race-left__results">7 resultats</p>
+                    <p class="race-left__results"></p>
                 </div>
                 <div class="race-left__filters">
                     <select onchange="onInit()" class="country-filter">
                         <option value="null">Par pays</option>
                     </select>
-                    <select class="pelage-filter">
-                        <option value="Par pelage">Par pelage</option>
+                    <select onchange="onInit()" class="pelage-filter">
+                        <option value="null">Par pelage</option>
                     </select>
                 </div>
-                <ul class="race-left__breeds"></ul>
+                <ul onclick="myFunction()" class="race-left__breeds"></ul>
+            </div>
+            <div class="race-right">
             </div>
         </div>
+
+        <button onclick="myFunction()">Click me</button>
+                    <p class="demo"></p>
         <script src="script.js"></script>
         <script src="script_races.js"></script>
     </body>

@@ -1,5 +1,9 @@
 const countryElement = document.querySelector(".country-filter");
-console.log(countryElement.value);
+const coatElement = document.querySelector(".pelage-filter");
+const breedContainerElement = document.querySelector(".race-left__breeds");
+const breedsResultsNumber = document.querySelector(".race-left__results");
+const test = document.querySelector(".race-left__breeds");
+
 async function getBreeds() {
     return new Promise((resolve) => {
         fetch("https://catfact.ninja/breeds?limit=100")
@@ -20,15 +24,17 @@ async function getBreeds() {
     });
 }
 
+console.log(getBreeds());
+
 async function onInit() {
     let breeds = await getBreeds();
     console.log(breeds);
     addBreedToSelect(breeds);
     addCountryToSelect(breeds);
+    addCoatToSelect(breeds);
 }
 
-const breedContainerElement = document.querySelector(".race-left__breeds");
-const breedsResultsNumber = document.querySelector(".race-left__results");
+
 
 function addBreedToSelect(breedsElement) {
     breedsResultsNumber.textContent = `${breedsElement.length} résultats`;
@@ -55,4 +61,25 @@ function addCountryToSelect(dataElement) {
         }
     });
 }
+
+function addCoatToSelect(dataCoatElement){
+    let coat = [];
+    dataCoatElement.forEach((element) => {
+        let coatAlreadyInArray = coat.includes(
+            element.coat.toString(),
+        );
+        if (!coatAlreadyInArray) {
+            coat.push(element.coat.toString());
+            const option = document.createElement("option");
+            option.textContent = element.coat.toString();
+            option.value = element.coat.toString();
+            coatElement.appendChild(option);
+        }
+    });
+}
+
+function myFunction() {
+    test.innerHTML = "Hello World";
+  }
+
 onInit();
