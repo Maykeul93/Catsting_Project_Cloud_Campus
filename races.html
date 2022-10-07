@@ -24,7 +24,23 @@
             <img class="navbar__darkmodeImg" src="darkmode.png" alt="" />
         </nav>
 
-        <ul id="race"></ul>
+        <div class="races-container">
+            <div class="race-left">
+                <div class="race-left__head">
+                    <h2 class="race-left__title">Races</h2>
+                    <p class="race-left__results">7 resultats</p>
+                </div>
+                <div class="race-left__filters">
+                    <select onchange="onInit()" class="country-filter">
+                        <option value="null">Par pays</option>
+                    </select>
+                    <select class="pelage-filter">
+                        <option value="Par pelage">Par pelage</option>
+                    </select>
+                </div>
+                <ul class="race-left__breeds"></ul>
+            </div>
+        </div>
         <script src="script.js"></script>
         <script src="script_races.js"></script>
     </body>

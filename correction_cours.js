@@ -87,3 +87,46 @@ function getImageDog() {
 
     xhr.send();
 }
+
+// Retirer les espaces(blancs) inutiles
+// et indenter correctement (2 espaces)
+// Ajouter des commentaires pour expliquer les fonctions et certaines lignes
+// Il faut pouvoir revenir demain et comprendre le code
+
+// Pour le moment, il y a trop d'imbrication est le code n'est pas assez
+// décomposé
+
+// Pensez à créer des fonctions qui effectuent des actions simples et claires
+// getBreeds()
+// setCountriesData(breeds)
+// filterByCountry()
+// addCountriesToSelect()
+// displayBreeds()
+// showBreedAfterClick()
+
+// Exemple de fonction correctement développée en gérant les flux
+
+// Fonction qui va s'occuper d'exécuter tout le code
+// dans celle-ci, nous pouvons définir ce qui est synchrone (await: attendre)
+// et ce qui ne l'ai pas (sans await: ne pas attendre)
+async function onInit() {
+    let breeds = await getBreeds();
+    // Une fois les races récupéré, vous pouvez les passer en argument d'une autre fonction
+    // Exemple : setCountriesData(breeds)
+    // Celle-ci va récupérer les pays des races, les ajouter dans un tableau, et
+    // supprimer les doublons
+    // Exemple : displayBreeds(breeds)
+    console.log(breeds);
+}
+
+onInit();
+
+async function getBreeds() {
+    return new Promise((resolve) => {
+        fetch("https://catfact.ninja/breeds")
+            .then((response) => response.json())
+            .then((result) => {
+                resolve(result.data);
+            });
+    });
+}
